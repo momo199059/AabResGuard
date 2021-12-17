@@ -20,13 +20,13 @@ buildscript {
     dependencies {
         classpath deps.plugin.digital
         classpath deps.plugin.shadow
-        classpath deps.plugin['bintray-plugin']
+//        classpath deps.plugin['bintray-plugin']
         classpath deps.gradle.agp
         classpath deps.kotlin.plugin
 
-        if ("true".equalsIgnoreCase(System.getProperty("enableAabResGuardPlugin", "false"))) {
-            classpath deps.aabresguard.plugin
-        }
+//        if ("true".equalsIgnoreCase(System.getProperty("enableAabResGuardPlugin", "false"))) {
+//            classpath deps.aabresguard.plugin
+//        }
     }
 }
 
@@ -34,12 +34,12 @@ allprojects {
     repositories {
         google()
         jcenter()
-        if ("true".equalsIgnoreCase(System.getProperty('useLocalMaven', "false"))) {
-            mavenLocal()
-        } else {
-            maven { url findProperty("RELEASE_REPOSITORY_URL") }
-            maven { url findProperty("SNAPSHOT_REPOSITORY_URL") }
-        }
+//        if ("true".equalsIgnoreCase(System.getProperty('useLocalMaven', "false"))) {
+//            mavenLocal()
+//        } else {
+//            maven { url findProperty("RELEASE_REPOSITORY_URL") }
+//            maven { url findProperty("SNAPSHOT_REPOSITORY_URL") }
+//        }
     }
 }
 

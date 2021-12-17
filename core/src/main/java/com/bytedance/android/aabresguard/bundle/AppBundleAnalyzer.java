@@ -28,6 +28,7 @@ public class AppBundleAnalyzer {
         TimeClock timeClock = new TimeClock();
         ZipFile bundleZip = new ZipFile(bundlePath.toFile());
         AppBundle appBundle = AppBundle.buildFromZip(bundleZip);
+        bundleZip.close();
         System.out.println(String.format("analyze bundle file done, const %s", timeClock.getCoast()));
         return appBundle;
     }

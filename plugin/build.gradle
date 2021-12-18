@@ -62,5 +62,13 @@ dependencies {
 //    all*.exclude group: "com.android.tools.build", module: "bundletool"
 //}
 
+configurations.all {
+    resolutionStrategy.dependencySubstitution {
+        resolutionStrategy {
+            force deps.bundletool
+        }
+    }
+}
+
 sourceCompatibility = versions.java
 targetCompatibility = versions.java

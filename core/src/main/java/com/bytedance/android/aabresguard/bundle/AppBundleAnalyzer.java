@@ -29,7 +29,7 @@ public class AppBundleAnalyzer {
         ZipFile bundleZip = new ZipFile(bundlePath.toFile());
         AppBundle appBundle = AppBundle.buildFromZip(bundleZip);
         bundleZip.close();
-        System.out.println(String.format("analyze bundle file done, const %s", timeClock.getCoast()));
+        System.out.println(String.format("bundleZip close and analyze bundle file done, const %s", timeClock.getCoast()));
         return appBundle;
     }
 }

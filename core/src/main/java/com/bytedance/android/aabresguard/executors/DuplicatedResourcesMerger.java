@@ -71,6 +71,7 @@ public class DuplicatedResourcesMerger {
                 rawAppBundle.getBundleMetadata()
         );
 
+        bundleZipFile.close();
         System.out.println(String.format(
                 "merge duplicated resources done, coast %s\n" +
                         "-----------------------------------------\n" +

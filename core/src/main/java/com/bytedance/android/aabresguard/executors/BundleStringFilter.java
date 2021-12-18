@@ -29,7 +29,6 @@ import static com.android.tools.build.bundletool.model.utils.files.FilePrecondit
  * Created by jiangzilai on 2019-10-20.
  */
 public class BundleStringFilter {
-    private final ZipFile bundleZipFile;
     private final AppBundle rawAppBundle;
     private final String unusedStrPath;
     private Set<String> languageWhiteList;
@@ -40,7 +39,6 @@ public class BundleStringFilter {
     public BundleStringFilter(Path bundlePath, AppBundle rawAppBundle, String unusedStrPath, Set<String> languageWhiteList)
             throws IOException {
         checkFileExistsAndReadable(bundlePath);
-        this.bundleZipFile = new ZipFile(bundlePath.toFile());
         this.rawAppBundle = rawAppBundle;
         this.unusedStrPath = unusedStrPath;
         this.languageWhiteList = languageWhiteList;

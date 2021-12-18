@@ -79,6 +79,8 @@ public class BundleFileFilter {
                 .setBundleMetadata(filterMetaData())
                 .setModules(ImmutableMap.copyOf(bundleModules))
                 .build();
+
+        bundleZipFile.close();
         System.out.println(String.format(
                 "filter bundle files done, coast %s" +
                         "-----------------------------------------\n" +

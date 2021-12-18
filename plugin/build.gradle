@@ -17,17 +17,6 @@ apply plugin: "groovy"
 apply plugin: "com.google.protobuf"
 apply plugin: "com.github.johnrengelman.shadow"
 
-
-[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
-
-configurations.all {
-    resolutionStrategy.dependencySubstitution {
-        resolutionStrategy {
-            force deps.bundletool
-        }
-    }
-}
-
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation gradleApi()
@@ -72,14 +61,6 @@ dependencies {
 //configurations {
 //    all*.exclude group: "com.android.tools.build", module: "bundletool"
 //}
-
-configurations.all {
-    resolutionStrategy.dependencySubstitution {
-        resolutionStrategy {
-            force deps.bundletool
-        }
-    }
-}
 
 sourceCompatibility = versions.java
 targetCompatibility = versions.java

@@ -1,7 +1,32 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.8"
+    }
+}
+
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 apply plugin: "groovy"
-apply from: rootProject.file('gradle/publish.gradle')
+//apply from: rootProject.file('gradle/publish.gradle')
+apply plugin: "com.google.protobuf"
+apply plugin: "com.github.johnrengelman.shadow"
+
+
+[compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+configurations.all {
+    resolutionStrategy.dependencySubstitution {
+        resolutionStrategy {
+            force deps.bundletool
+        }
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -11,15 +36,49 @@ dependencies {
 
     implementation deps.kotlin.stdlib
     implementation deps.kotlin.plugin
-    compileOnly deps.aabresguard.core
-    api(deps.aabresguard.core) {
-        exclude group: "com.google.guava", module: "guava"
-        exclude group: "com.android.tools.build", module: "gradle"
-    }
+//    compileOnly deps.aabresguard.core
+//    api(deps.aabresguard.core) {
+//        exclude group: "com.google.guava", module: "guava"
+//        exclude group: "com.android.tools.build", module: "gradle"
+//    }
+
+    compileOnly "com.android.tools.build:aapt2-proto:0.4.0"
+//    compileOnly gradleApi()
+//    compile deps.gradle.agp
+
+    implementation "com.android.support:support-annotations:24.2.0"
+    shadow 'commons-io:commons-io:2.6'
+    shadow 'commons-codec:commons-codec:1.5'
+    shadow "com.google.guava:guava:27.0.1-jre"
+
+    annotationProcessor "com.google.auto.value:auto-value:1.5.2"
+    implementation "com.google.auto.value:auto-value:1.5.2"
+    shadow group: 'org.dom4j', name: 'dom4j', version: '2.1.0'
+    shadow "com.android.tools.build:bundletool:0.10.0"
+
+    testImplementation deps.gradle.agp
+    testImplementation "com.android.tools.build:aapt2-proto:0.4.0"
+    testImplementation group: 'org.dom4j', name: 'dom4j', version: '2.1.0'
+    testImplementation "junit:junit:4.12"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.2.0"
+    testImplementation "com.google.guava:guava:27.0.1-jre"
+    testImplementation "org.mockito:mockito-core:2.18.3"
+    testImplementation "com.google.truth.extensions:truth-java8-extension:0.45"
+    testImplementation "com.google.truth.extensions:truth-proto-extension:0.45"
+    testImplementation "com.google.auto.value:auto-value:1.5.2"
+    testAnnotationProcessor "com.google.auto.value:auto-value:1.5.2"
 }
 
-configurations {
-    all*.exclude group: "com.android.tools.build", module: "bundletool"
+//configurations {
+//    all*.exclude group: "com.android.tools.build", module: "bundletool"
+//}
+
+configurations.all {
+    resolutionStrategy.dependencySubstitution {
+        resolutionStrategy {
+            force deps.bundletool
+        }
+    }
 }
 
 sourceCompatibility = versions.java

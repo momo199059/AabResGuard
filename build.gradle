@@ -5,14 +5,6 @@ buildscript {
     repositories {
         google()
         jcenter()
-        if ("true".equalsIgnoreCase(System.getProperty('useLocalMaven', "false"))) {
-            println "use local repo"
-            mavenLocal()
-        } else {
-            println "use remote repo"
-            maven { url findProperty("RELEASE_REPOSITORY_URL") }
-            maven { url findProperty("SNAPSHOT_REPOSITORY_URL") }
-        }
         maven {
             url "https://plugins.gradle.org/m2/"
         }
@@ -20,13 +12,8 @@ buildscript {
     dependencies {
         classpath deps.plugin.digital
         classpath deps.plugin.shadow
-//        classpath deps.plugin['bintray-plugin']
         classpath deps.gradle.agp
         classpath deps.kotlin.plugin
-
-//        if ("true".equalsIgnoreCase(System.getProperty("enableAabResGuardPlugin", "false"))) {
-//            classpath deps.aabresguard.plugin
-//        }
     }
 }
 
@@ -35,15 +22,9 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
-//        if ("true".equalsIgnoreCase(System.getProperty('useLocalMaven', "false"))) {
-//            mavenLocal()
-//        } else {
-//            maven { url findProperty("RELEASE_REPOSITORY_URL") }
-//            maven { url findProperty("SNAPSHOT_REPOSITORY_URL") }
-//        }
     }
 }
-//
-//task clean(type: Delete) {
-//    delete rootProject.buildDir
-//}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

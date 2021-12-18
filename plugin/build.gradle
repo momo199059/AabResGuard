@@ -13,10 +13,8 @@ buildscript {
 apply plugin: 'java-library'
 apply plugin: 'kotlin'
 apply plugin: "groovy"
-//apply from: rootProject.file('gradle/publish.gradle')
 apply plugin: "com.google.protobuf"
 apply plugin: "com.github.johnrengelman.shadow"
-
 
 configurations.all {
     resolutionStrategy.dependencySubstitution {
@@ -57,10 +55,6 @@ dependencies {
     testImplementation "com.google.auto.value:auto-value:1.5.2"
     testAnnotationProcessor "com.google.auto.value:auto-value:1.5.2"
 }
-
-//configurations {
-//    all*.exclude group: "com.android.tools.build", module: "bundletool"
-//}
 
 sourceCompatibility = versions.java
 targetCompatibility = versions.java

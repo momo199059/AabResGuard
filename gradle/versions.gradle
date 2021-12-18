@@ -2,7 +2,7 @@ def versions = [:]
 versions.agp = "4.1.0"
 versions.kotlin = "1.3.61"
 versions.java = "8"
-versions.aabresguard = "0.1.8"
+versions.aabresguard = "0.0.3"
 // android
 versions.compileSdkVersion = 28
 versions.minSdkVersion = 15
@@ -44,8 +44,8 @@ deps.appcompatV7 = "com.android.support:appcompat-v7:${versions.support}"
 deps.bundletool = "com.android.tools.build:bundletool:${versions.bundletool}"
 // aabresguard
 def aabresguard = [:]
-aabresguard.core = "$GROUP_ID:aabresguard-core:${versions["aabresguard"]}"
-aabresguard.plugin = "$GROUP_ID:aabresguard-plugin:${versions["aabresguard"]}"
+aabresguard.core = "com.github.momo199059:AabResGuardCore:${versions["aabresguard"]}"
+aabresguard.plugin = "com.github.momo199059:AabResGuard:${versions["aabresguard"]}"
 deps.aabresguard = aabresguard
 
 ext.deps = deps

@@ -44,8 +44,8 @@ deps.appcompatV7 = "com.android.support:appcompat-v7:${versions.support}"
 deps.bundletool = "com.android.tools.build:bundletool:${versions.bundletool}"
 // aabresguard
 def aabresguard = [:]
-aabresguard.core = "com.github.momo199059:AabResGuardCore:${versions["aabresguard"]}"
-aabresguard.plugin = "com.github.momo199059:AabResGuard:${versions["aabresguard"]}"
+aabresguard.core = "$GROUP_ID:AabResGuardCore:${versions["aabresguard"]}"
+aabresguard.plugin = "$GROUP_ID:AabResGuard:${versions["aabresguard"]}"
 deps.aabresguard = aabresguard
 
 ext.deps = deps

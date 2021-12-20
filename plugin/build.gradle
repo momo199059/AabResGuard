@@ -62,7 +62,7 @@ targetCompatibility = versions.java
 
 
 shadowJar {
-    baseName = "AabResGuard"
+    baseName = ARTIFACT_ID
     version = versions[ARTIFACT_ID]
     classifier = ''
 

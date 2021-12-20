@@ -12,8 +12,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     version = versions[ARTIFACT_ID]
 }
 
-apply plugin: 'maven-publish'
-
 publishing {
     publications {
         MyPublication(MavenPublication) { publication ->
